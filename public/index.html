@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>BeingChef</title>
+    <link rel="stylesheet" href="css/sticky-footer-navbar.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link href="css/carousel.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/beingchef/user/user.css" />
+    <link href="css/beingchef/details/details.css" rel="stylesheet" />
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-rating-input.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/beingchef/index.js"></script>
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="js/beingchef/home/home.js"></script>
+    <script src="js/beingchef/beingchef-service.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="js/beingchef/loginregister/login-register.js"></script>
+    <script src="js/beingchef/misc/about.js"></script>
+    <script src="js/beingchef/misc/contact.js"></script>
+    <script src="js/beingchef/details/details.js"></script>
+    <script src="js/jquery.timeago.js"></script>
+    <script src="js/humanized_time_span.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/beingchef/dashboard/dashboard.js"></script>
+    <script src="js/beingchef/search/search.js"></script>
+    <script src="js/beingchef/user/user.js"></script>
+    <script src="js/simplePagination.js"></script>
+    <script src="js/bootstrap-rating-input.min.js"></script>
+    <script src="js/typeahead.jquery.min.js"></script>
+    <script src="js/typeahead.bundle.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Arizonia" rel="stylesheet" type="text/css">
+
+
+</head>
+<body ng-app="BeingChefApp">
+    <div class="navbar-wrapper" ng-controller="BeingChefAppController" >
+        <div class="container">
+
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    <a class="navbar-brand beingchef-title" href="#/home"><strong>BeingChef</strong></a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        
+                         <ul class="nav navbar-nav navbar-right">
+                             <li>
+                                 <button type="button" ng-hide="currentUser" class="btn btn-default navbar-btn beingchef-nav" ng-click="showLoginRegisterForm('login')">
+                                     <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                                     <span>Login</span>
+                                 </button>
+                             </li>
+                             <li>
+                                 <button type="button" ng-hide="currentUser" class="btn btn-default navbar-btn beingchef-nav" ng-click="showLoginRegisterForm('register')">
+                                     <span>Register</span>&nbsp;
+                                 </button>
+                             </li>
+                             
+                             <li  ng-show="currentUser">
+                                 <a class="dropdown-toggle beingchef-nav-dropdown" data-toggle="dropdown" data-target="userMenu" aria-expanded="false">
+                                     <span class="glyphicon glyphicon-user beingchef-nav-text"></span>
+                                     <strong class="beingchef-nav-text">{{currentUser.username}}</strong>
+                                     <span class="glyphicon glyphicon-chevron-down"></span>
+                                 </a>
+                                 <ul class="dropdown-menu dropdown" id="userMenu" role="menu">
+                                     <li>
+                                         <div class="navbar-login">
+                                             <div class="row">
+                                                 <div class="col-lg-4">
+                                                     <p class="text-center">
+                                                         <span class="glyphicon glyphicon-user icon-size"></span>
+                                                     </p>
+                                                 </div>
+                                                 <div class="col-lg-8">
+                                                     <p class="text-left"><strong>{{currentUser.firstName}}&nbsp;{{currentUser.lastName}}</strong></p>
+                                                     <p class="text-left small">{{currentUser.email}}</p>
+                                                     <!--<p class="text-left">
+                                                         <a href="#" class="btn btn-primary btn-block btn-sm">Update Data</a>
+                                                     </p>-->
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </li>
+                                     <li class="divider"></li>
+                                     <li>
+                                         <div class="navbar-login navbar-login-session">
+                                             <div class="row">
+                                                 <div class="col-lg-12">
+                                                     <p>
+                                                         <a href="#/dashboard" class="btn btn-success btn-block">My Dashboard</a>
+                                                     </p>
+                                                 </div>
+                                             </div>
+                                             <div class="row">
+                                                 <div class="col-lg-12">
+                                                     <p>
+                                                         <button ng-click="logout()" class="btn btn-danger btn-block">Logout</button>
+                                                     </p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </li>
+                                 </ul>
+                             </li>
+                         </ul>                    
+
+                        
+                    </div>
+                    
+                    
+                </div>
+            </nav>
+
+
+
+        </div>
+        <ng-view></ng-view>
+        
+        <footer class="footer">
+            <div class="container">
+                <div id="navbar" class="row row-centered" >
+                    
+                    <div class="col-centered-footer">
+                        <ul class="list-unstyled list-inline">
+                            <li>
+                                <a class="beingchef-page-nav-footer" ng-click="showAbout()">
+                                    <span>about</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="beingchef-page-nav-footer" ng-click="showContact()">
+                                    <span>contact</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+ 
+
+</body>
+</html>

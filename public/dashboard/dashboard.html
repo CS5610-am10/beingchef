@@ -1,0 +1,157 @@
+﻿<div class="container content">
+    
+
+    <h2>{{currentUser.firstName}}&nbsp;{{currentUser.lastName}}</h2>
+    <ul class="tabs">
+        <li class="tab-link current" data-target="#favorites">My Favorites</li>
+        <li class="tab-link" data-target="#reviews">My Reviews</li>
+        <li class="tab-link" data-target="#following">Following</li>
+        <li class="tab-link" data-target="#grocery">My Grocery List</li>
+    </ul>
+    <div id="favorites" class="tab-content current">
+        <h3><span ng-hide="favorites && favorites.length > 0" class="label label-info">No favorites to display</span></h3>
+      
+        <div ng-show="favorites && favorites.length > 0" class="row">
+            <div class="col-sm-4" ng-repeat="favorite in favorites">
+                <div class="well well-sm">
+                    <button type="button" class="btn btn-danger pull-right" ng-click="removeFavorite(favorite._id)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <div>
+                        <img ng-src="{{favorite.recipeUrl}}" class="dash-result-img img-responsive" />
+
+                    </div>
+                    <a href="#/detail/{{favorite.recipeId}}">{{favorite.recipeTitle}}</a>
+
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <div id="reviews" class="tab-content">
+        <h3><span ng-hide="reviews && reviews.length > 0" class="label label-info">No reviews to display</span></h3>
+        <div class="row" ng-show="reviews && reviews.length > 0">
+            <div class="col-sm-4" ng-repeat="review in reviews | orderBy : 'creationDate' : true">
+                <div class="well well-sm">
+                    <button type="button" class="btn btn-danger pull-right" ng-click="removeReview(review)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <img ng-src="{{review.recipeUrl}}" class="dash-result-img img-responsive" />
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#/detail/{{review.recipeId}}">{{review.recipeTitle}}</a>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Rating: </strong>
+                                <span class="glyphicon glyphicon-star" ng-repeat="i in [] | range : review.rating"></span>
+                                <span class="glyphicon glyphicon-star-empty" ng-repeat="i in [] | range : 5-review.rating"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>Comments:</strong>
+                            {{review.comment}}
+                        </li>
+                        <li>
+                            <span class="date sub-text">about {{review.timeSpan}}</span>
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div id="following" class="tab-content">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-centered">
+                <form role="search" ng-submit="viewUser()">
+                    <div class="input-group">
+                        <input type="text" class="form-control search-input-button" typeahead="user for user in usernames" autocomplete="off" spellcheck="false" required id="txtSearch" placeholder="Search for users" autofocus="" ng-model="searchUser">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default search-input-button" aria-label="Left Align">
+                                View User
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="alert alert-danger" ng-show="userNotFound">
+            <button class="btn btn-danger pull-right err-btn" ng-click="dismissErrorMessage()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <strong>{{userNotFound}}</strong>
+
+        </div>
+
+        <h3><span ng-hide="following && following.length > 0" class="label label-info">You are not following anyone</span></h3>
+        <div ng-show="following && following.length > 0" class="row">
+            <div class="col-sm-4" ng-repeat="user in following">
+                <div class="well well-sm">
+                    <button type="button" class="btn btn-danger pull-right" ng-click="unfollow($index, user._id)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <div>
+                        <h2>
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            <a href="#/user/{{user.username}}">{{user.firstName}}&nbsp;{{user.lastName}}</a>
+                        </h2>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="grocery" class="tab-content">
+        <div class="alert alert-danger" ng-show="isError">
+            <button class="btn btn-danger pull-right err-btn" ng-click="dismissErrorMessage()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <strong>{{errorMessage}}</strong>
+            
+        </div>
+        <div class="alert alert-success" ng-show="isSuccess">
+            <button class="btn btn-success pull-right err-btn" ng-click="dismissSuccessMessage()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <strong>{{successMessage}}</strong>
+            
+        </div>
+        
+                <table class="table table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input class="form-control" type="text" ng-model="newItem.Name" /></td>
+                            <td><input class="form-control" type="text" ng-model="newItem.Quantity" /></td>
+                            <td><input class="form-control" type="text" ng-model="newItem.Unit" /></td>
+                            <td>
+                                <button type="button" class="btn btn-success pull-right" ng-click="addGroceryItem(newItem)">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="item in currentUser.groceryList">
+                            <td>{{item.name}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.unit}}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger pull-right" ng-click="deleteGroceryItem(item._id)">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+    </div>
+    
+</div>

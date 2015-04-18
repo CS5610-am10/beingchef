@@ -1,0 +1,76 @@
+﻿<div class="container content">
+    <div class="row row-centered">
+        <div class="col-md-4 col-sm-4 col-xs-8 col-centered">
+            <form role="search" ng-submit="search()">
+                <div class="input-group">
+                    <input type="text" class="form-control search-input-button" required id="txtSearch" placeholder="Search 350,000+ Recipes" autofocus="" ng-model="searchText">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default search-input-button" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
+            </div>
+        </div>
+
+    <div class="row row-centered" ng-show="searchResults.ResultCount == 0">
+        <div class="col-md-4 col-sm-4 col-centered">
+            <div class="alert alert-danger">
+                <strong>Sorry!!! No results found for: {{notFoundString}}</strong>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="searchResults && searchResults.ResultCount > 0">
+        <h2>Search Results:</h2>
+        <span class="date sub-text">Found {{searchResults.Results.length}} results in {{secs}} seconds</span>
+        <div class="row row-centered">
+            <div class="col-md-4 col-sm-4 col-centered">
+                <button class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1">
+                    <span class="glyphicon glyphicon-chevron-left beingchef-page-nav" aria-hidden="true"></span>
+                </button>
+                <button class="btn btn-default" ng-disabled="currentPage >= searchResults.Results.length/pageSize - 1" ng-click="currentPage = currentPage + 1">
+                    <span class="glyphicon glyphicon-chevron-right beingchef-page-nav" aria-hidden="true"></span>
+                </button>
+
+            </div>
+        </div>
+        <div class="row" id="searchResults" ng-show="searchResults && searchResults.ResultCount > 0">
+
+
+
+            <div class="col-sm-4 col-xs-4" ng-repeat="result in searchResults.Results | startFrom: currentPage * pageSize | limitTo: pageSize">
+                <div class="well well-lg">
+                    <a href="#/detail/{{result.RecipeID}}">
+                        <div class="row">
+                            <img ng-src="{{result.ImageURL}}" class="search-result-img img-responsive" />
+                        </div>
+                        <div class="row">
+                            <strong class="search-result-text">{{result.Title}}</strong>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="row row-centered">
+            <div class="col-md-4 col-sm-4 col-centered">
+                <button class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1">
+                    <span class="glyphicon glyphicon-chevron-left beingchef-page-nav" aria-hidden="true"></span>
+                </button>
+                <button class="btn btn-default" ng-disabled="currentPage >= searchResults.Results.length/pageSize - 1" ng-click="currentPage = currentPage + 1">
+                    <span class="glyphicon glyphicon-chevron-right beingchef-page-nav" aria-hidden="true"></span>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

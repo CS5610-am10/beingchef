@@ -1,0 +1,83 @@
+﻿
+.section {
+    padding-bottom:10px;
+}
+.expandcollapse-heading {
+    
+  cursor: pointer;
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 15px 20px;
+  color: #ffffff; 
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+
+.expandcollapse-item:first-of-type {
+  border-top:0px;
+}
+
+
+.expandcollapse-heading{
+  font-size: 16px;
+  font-weight: normal;
+  margin:0px;
+}
+
+.expand-collapse-content {
+  padding: 15px 20px;
+   border: 1px solid transparent;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-color: #337ab7;
+}
+
+
+.slideDown.ng-hide {
+  max-height:0;
+  transition:max-height 0.5s ease;
+  overflow:hidden;
+}
+
+.slideDown {
+  max-height:2000px;
+  transition:max-height 1s ease;
+  overflow:hidden;
+
+}
+
+.slideDown.ng-hide-remove,
+.slideDown.ng-hide-add {
+  display:block!important;
+}
+
+
+.slideDown.ng-hide-add {
+  animation-name: hide;
+  -webkit-animation-name: hide;  
+
+  animation-duration: .5s; 
+  -webkit-animation-duration: .5s;
+
+  animation-timing-function: ease-in;  
+  -webkit-animation-timing-function: ease-in;  
+}
+
+
+
+.slideDown.ng-hide-remove {
+  animation-name: show;
+  -webkit-animation-name: show;  
+
+  animation-duration: .5s; 
+  -webkit-animation-duration: .5s;
+
+  animation-timing-function: ease-out;  
+  -webkit-animation-timing-function: ease-out;  
+}

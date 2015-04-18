@@ -1,0 +1,84 @@
+﻿<div class="modal-header login_modal_header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h2 class="modal-title" id="myModalLabel">{{header}}</h2>
+</div>
+<div class="modal-body login-modal">
+    <div class="alert alert-danger" role="alert" ng-show="errorMessage">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{errorMessage}}
+    </div>
+    <div class="clearfix"></div>
+    <div class="loginBox" ng-show="isLogin">
+        <div id='social-icons-conatainer'>
+            <form ng-submit="loginUser(user)">
+                <div class="form-group">
+                    <input type="text" required id="username" placeholder="Enter your name" value="" class="form-control login-field" ng-model="user.username">
+                    <i class="fa fa-user login-field-icon"></i>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" required id="login-pass" placeholder="Password" value="" class="form-control login-field" ng-model="user.password">
+                    <i class="fa fa-lock login-field-icon"></i>
+                </div>
+
+                <button type="submit" class="btn btn-success modal-login-btn">Login</button>
+
+                <!--<a href="#" class="login-link">Lost your password?</a>-->
+
+            </form>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="form-group">
+            <button class="btn btn-default" ng-click="showRegisterForm()"> New User Registeration?</button>
+        </div>
+    </div>
+
+    <div class="registerBox" ng-hide="isLogin">
+        <div id='social-icons-conatainer'>
+            <form ng-submit="registerUser(newuser)">
+                <div class="form-group">
+                    <input type="text" required id="username" ng-model="newuser.firstName" placeholder="First Name" value="" class="form-control login-field" ng-model="user.username">
+                    <i class="fa fa-user login-field-icon"></i>
+                </div>
+                <div class="form-group">
+                    <input type="text" required id="username" ng-model="newuser.lastName" placeholder="Last Name" value="" class="form-control login-field" ng-model="user.username">
+                    <i class="fa fa-user login-field-icon"></i>
+                </div>
+                <div class="form-group">
+                    <input type="email" required id="username" ng-model="newuser.email" placeholder="Email" value="" class="form-control login-field" ng-model="user.username">
+                    <i class="fa fa-user login-field-icon"></i>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" required id="username" ng-model="newuser.username" placeholder="Username" value="" class="form-control login-field" ng-model="user.username">
+                    <i class="fa fa-user login-field-icon"></i>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" required id="login-pass" ng-model="newuser.password" placeholder="Password" value="" class="form-control login-field" ng-model="user.password">
+                    <i class="fa fa-lock login-field-icon"></i>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" required id="login-pass" ng-model="newuser.password2" placeholder="Confirm Password" value="" class="form-control login-field" ng-model="user.password">
+                    <i class="fa fa-lock login-field-icon"></i>
+                </div>
+
+                <button type="submit" class="btn btn-success modal-login-btn">Register</button>
+
+            </form>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="form-group">
+            <a class="btn btn-default" ng-click="showLoginForm()"> Already have an account?</a>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="modal-footer login_modal_footer">
+</div>

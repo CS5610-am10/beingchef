@@ -1,0 +1,86 @@
+﻿    
+
+    <script src="../js/bootstrap-rating-input.min.js"></script>
+    
+<div class="container content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-success" ng-show="isSuccess">
+                <button class="btn btn-success pull-right err-btn" ng-click="dismissSuccessMessage()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <strong>Success!</strong> {{successMessage}}
+            </div>
+            <h2>
+                {{dish.Title}}
+            </h2>
+            <h4>
+                <button class="btn btn-success" ng-click="addToFavorite(dish)" ng-hide="isFavorite">Add to favorites</button>
+                <button class="btn btn-danger" ng-click="removeFromFavorite()" ng-show="isFavorite">Remove from favorites</button>
+                <button class="btn btn-success" ng-click="addToGroceryList()">Add to Grocery List</button>
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <img ng-src="{{dish.ImageURL}}" class="img-responsive" />
+        </div>
+        <div class="col-xs-8">
+            <dl>
+                <dt ng-show="dish.Description">Description:</dt>
+                <dd ng-show="dish.Description">{{dish.Description}}</dd>
+                <dt ng-show="dish.Cuisine">Cuisine:</dt>
+                <dd ng-show="dish.Cuisine">{{dish.Cuisine}}</dd>
+
+                <dt ng-show="dish.Ingredients">Ingredients:</dt>
+                <dd ng-show="dish.Ingredients">
+                    <table class="table table-striped">
+                        <tr ng-repeat="ingredient in dish.Ingredients">
+                            <td>
+                                {{ingredient.Name}}
+                            </td>
+                            <td>
+                                {{ingredient.Quantity}} {{ingredient.Unit}}
+                            </td>
+                        </tr>
+
+                    </table>
+                </dd>
+                
+                <dt>Instructions:</dt>
+                <dd>{{dish.Instructions}}</dd>
+                <dt ng-show="dish.YieldNumber">Yields:</dt>
+                <dd ng-show="dish.YieldNumber">{{dish.YieldNumber}}&nbsp;{{dish.YieldUnit}}</dd>
+            </dl>
+            
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4"></div>
+         <div class="col-xs-8 ">
+             <strong ng-show="dishReviews.length > 0">User Reviews:</strong>
+             <strong ng-hide="dishReviews.length > 0">Be the first one to review</strong>
+                <div class="actionBox">
+                    
+                    <ul class="commentList" ng-show="dishReviews">
+                        <li ng-repeat="review in dishReviews">
+                            <span class="glyphicon glyphicon glyphicon-user commenterImage" aria-hidden="true"></span>
+                            <div class="commentText">
+                                <div>
+                                    <span class="glyphicon glyphicon-star" ng-repeat="i in [] | range : review.rating"></span>
+                                    <span class="glyphicon glyphicon-star-empty" ng-repeat="i in [] | range : 5-review.rating"></span>
+                                </div>
+                                <p>{{review.comment}} </p> <span class="date sub-text">by <a href="#/user/{{review.username}}">{{review.username}}</a>, {{review.timeSpan}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <form  role="form">
+                        <div class="form-group">
+                            <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5" ng-model="reviewComment"></textarea>
+                            <input class="rating" id="rating" data-max="5" data-min="1" type="number"/>
+                        </div>
+                        <button class="btn btn-success" ng-click="addReview()">Add Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

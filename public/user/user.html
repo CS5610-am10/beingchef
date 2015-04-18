@@ -1,0 +1,101 @@
+﻿<div class="container content">
+    
+    <div class="well well-lg">
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <h4><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{firstName}} {{lastName}}</strong></h4>
+                </div>
+               
+            </div>
+            <div class="row" ng-hide="isUserSameAsLoggedin">
+                <div class="col-sm-6 col-xs-6">
+                    <button class="btn btn-success" ng-click="follow()" ng-hide="isFollow">Follow</button>
+                    <button class="btn btn-danger" ng-click="unfollow()" ng-show="isFollow">Unfollow</button>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+
+            <div class="section">
+                <div ng-click="active = !active" class="expandcollapse-heading">
+                    <span class="glyphicon glyphicon-plus" ng-show="active" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-minus" ng-show="!active" aria-hidden="true"></span>
+                    &nbsp; Favorites
+                </div>
+
+                <div class="slideDown" ng-hide="active">
+                    <div class="expand-collapse-content">
+                        <div class="row" ng-hide="favorites && favorites.length > 0">
+                            <div class="col-xs-6 col-sm-6">
+                                <h3><span class="label label-info">No favorites to display</span></h3>
+                            </div>
+                        </div>
+                        
+                        <div ng-show="favorites && favorites.length > 0" class="row">
+                            <div class="col-sm-4" ng-repeat="favorite in favorites">
+                                <div class="well well-sm">
+                                    <div>
+                                        <img ng-src="{{favorite.recipeUrl}}" class="search-result-img img-responsive" />
+                                    </div>
+                                    <a href="#/detail/{{favorite.recipeId}}">{{favorite.recipeTitle}}</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div ng-click="active1 = !active1" class="expandcollapse-heading">
+                    <span class="glyphicon glyphicon-plus" ng-show="active1" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-minus" ng-show="!active1" aria-hidden="true"></span>
+                    &nbsp; Reviews
+                </div>
+
+                <div class="slideDown" ng-hide="active1">
+                    <div class="expand-collapse-content">
+                        <h3><span ng-hide="reviews && reviews.length > 0" class="label label-info">No reviews to display</span></h3>
+                        <div class="row" ng-show="reviews && reviews.length > 0">
+                            <div class="col-sm-4" ng-repeat="review in reviews | orderBy : 'creationDate' : true">
+                                <div class="well well-sm">
+                                    <img ng-src="{{review.recipeUrl}}" class="search-result-img img-responsive" />
+
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="#/detail/{{review.recipeId}}">{{review.recipeTitle}}</a>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <strong>Rating: </strong>
+                                                <span class="glyphicon glyphicon-star" ng-repeat="i in [] | range : review.rating"></span>
+                                                <span class="glyphicon glyphicon-star-empty" ng-repeat="i in [] | range : 5-review.rating"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong>Comments:</strong>
+                                            {{review.comment}}
+                                        </li>
+                                        <li>
+                                            <span class="date sub-text">about {{review.timeSpan}}</span>
+                                        </li>
+                                        <li>
+
+                                        </li>
+                                    </ul>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+    </div>
+</div>

@@ -1,0 +1,359 @@
+﻿.content {
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
+.search-bg{
+    background-image:url(../images/homeSearch2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: auto;
+}
+
+
+.homepage-hero{
+    padding-top: 100px;
+    padding-bottom: 150px;
+    background: url(../images/homeSearch2.jpg) center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    background-attachment: fixed;
+}
+.homepage-hero-content{
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
+.text-shadow{
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 1);
+}
+.homepage-search {
+    margin: 0 auto;
+    padding: 40px;
+    max-width: 600px;
+}
+.search-input-button {
+    min-width: 41px;
+    margin: 0 auto;
+    height: 46px;
+}
+
+
+@media screen and (min-height: 550px) {
+    .search-bg{
+        height:623px;
+    }
+    .search-box{
+        padding-top:310px;
+        
+    }    
+}
+
+@media screen and (min-height: 450px) and (max-height: 549px) {
+    .search-bg{
+        height:500px;
+    }
+    .search-box{
+        padding-top:310px;
+        
+    }    
+}
+
+@media screen and (min-height: 400px) and (max-height: 449px) {
+    .search-bg{
+        height:425px;
+    }
+    .search-box{
+        padding-top:200px;
+        
+    }    
+}
+
+
+
+@media screen and (min-height: 200px) and (max-height: 399px) {
+    .search-bg{
+       
+        height:200px;
+    }    
+
+    .search-box{
+        padding-top:100px;
+        
+    }
+}
+
+@media screen and (max-height: 199px) {
+    .search-bg{
+        
+        height:150px;
+    }    
+
+    .search-box{
+        padding-top:75px;
+        
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .search-result-img{
+        height:300px;
+        width:500px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+     .search-result-img{
+        height:250px;
+        width:350px;
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 990px){
+     .search-result-img{
+        height:200px;
+        width:300px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 768px){
+     .search-result-img{
+        height:100px;
+        width:200px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 549px){
+     .search-result-img{
+        height:50px;
+        width:100px;
+    }
+}
+
+
+/*dashboard image css*/
+@media (min-width: 1200px) {
+    .dash-result-img{
+        height:200px;
+        width:250px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+     .dash-result-img{
+        height:100px;
+        width:150px;
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 990px){
+     .dash-result-img{
+        height:100px;
+        width:150px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 768px){
+     .dash-result-img{
+        height:100px;
+        width:200px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 549px){
+     .dash-result-img{
+        height:50px;
+        width:100px;
+    }
+}
+    
+.detailBox {
+    width:320px;
+    border:1px solid #bbb;
+    margin:50px;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:18%;
+}
+
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+
+
+ul.tabs {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    
+}
+
+    ul.tabs li {
+        background-color: #337ab7;
+        color: #222;
+        display: inline-block;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        font-weight:bold;
+    }
+
+        ul.tabs li.current {
+            background: #ededed;
+            color: #222;
+            border-top:solid 3px;
+            border-top-color:#337ab7;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-weight:bolder;
+        }
+
+.tab-content {
+    display: none;
+    background: #ededed;
+    padding: 15px;
+   border-color: #bce8f1
+}
+
+    .tab-content.current {
+        display: inherit;
+    }
+
+.alert {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
+.alert.ng-hide {
+    opacity: 0;
+}
+
+.err-btn {
+    margin-top: -6px;
+}
+
+.beingchef-title {
+  font: 100 25px/1.3 'Arizonia', Helvetica, sans-serif;
+  color: #2b2b2b;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1); 
+  color: #999;
+  float: left;
+  padding: 10px 15px;
+}
+
+.beingchef-nav {
+    margin-right: 5px;
+    margin-bottom:10px;
+}
+
+.beingchef-nav-text {
+    font-size: 20px;
+}
+
+.icon-size
+{
+    font-size: 57px;
+}
+
+.navbar-login
+{
+    width: 250px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.beingchef-nav-dropdown {
+    cursor:pointer;
+}
+
+.beingchef-page-nav {
+    cursor:pointer;
+    font-size:30px;
+}
+
+.beingchef-page-nav-footer {
+    cursor:pointer;
+    color:white;
+    font-size:15px;
+}
+
+.row-centered {
+    text-align:center;
+    margin-bottom:10px;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-right:-4px;
+}
+
+.col-centered-footer {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-right:-4px;
+    margin-top: 15px;
+}
+
+.search-result-text {
+    font-size:12px;
+}
